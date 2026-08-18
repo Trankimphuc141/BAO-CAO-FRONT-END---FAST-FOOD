@@ -1,0 +1,999 @@
+/* [UPDATE: 18.08.2026] - Cấu trúc CSS và màu sắc cơ bản phù hợp cho sinh viên, dễ giải thích */
+
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif; /* Hoặc font tùy chọn của bạn */
+    background-color: #ffffff;
+}
+
+/* [UPDATE: 2026-08-16] - Thêm thuộc tính sticky, hiệu ứng bóng đổ cho thanh Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background-color: #c41a1a;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+/* Phần Logo */
+.logo img {
+    height: 90px; /* Điều chỉnh chiều cao logo phù hợp */
+    cursor: pointer;
+}
+
+/* Phần Menu */
+.nav-menu ul {
+    list-style: none;
+    display: flex;
+    gap: 30px; /* Khoảng cách giữa các menu item */
+}
+
+/* [UPDATE: 2026-08-16] - Cải thiện giao diện liên kết menu, thêm hiệu ứng gạch chân mượt mà khi hover */
+.nav-menu ul li a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 5px;
+    transition: all 0.3s ease;
+}
+
+.nav-menu ul li a:hover {
+    color: #ffb703;
+}
+
+.nav-menu ul li a.active {
+    color: #ffb703; 
+}
+
+.nav-menu ul li a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    height: 2px;
+    background-color: #ffb703;
+    transition: all 0.3s ease;
+}
+
+.nav-menu ul li a:hover::after,
+.nav-menu ul li a.active::after {
+    width: 100%;
+}
+
+/* [UPDATE: 2026-08-16] - Làm đẹp nút Book Your Table, thêm hiệu ứng hover nổi bật */
+.btn-book {
+    background-color: #ffb703;
+    color: #1e1e1e;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.btn-book:hover {
+    background-color: #fb8500;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.square-banner, .hero-banner {
+    width: 100%;
+    max-width: auto;
+    margin: 0;  
+    padding: 0;        
+}
+
+.square-banner img, 
+.hero-banner img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover; 
+    border-radius: 0; 
+    display: block;
+    box-shadow: none; 
+}
+
+/* [UPDATE: 2026-08-16] - Thiết kế lại khu vực Banner và tối ưu hiển thị */
+.square-banner {
+    position: relative;
+}
+.square-banner::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.05), rgba(0,0,0,0.3));
+    pointer-events: none;
+}
+
+
+/* [UPDATE: 2026-08-18] - Thêm class bọc ngoài cùng (wrapper) để màu nền khu vực Thực Đơn tràn viền 100% màn hình lớn */
+.menu-wrapper {
+    width: 100%;
+    background-color: #fff9f9; 
+    padding-top: 40px; 
+}
+
+/* [UPDATE: 2026-08-16] - Xây dựng khu vực danh mục sản phẩm (Category Row) */
+/* [UPDATE: 2026-08-18] - Chỉnh sửa lại container để nội dung canh giữa, thêm padding an toàn và bỏ nền để ăn theo wrapper */
+.food-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px 20px 20px; 
+    background-color: transparent; 
+}
+
+/* [UPDATE: 2026-08-16] - Cải thiện thanh danh mục (category-row) bằng flex-wrap để tự động bọc dòng, tránh tràn viền */
+.category-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding-bottom: 20px;
+}
+
+.category-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    min-width: 130px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    border-color: #ffb703;
+}
+
+.category-card.active {
+    background-color: #c41a1a;
+    color: #ffffff;
+    box-shadow: 0 8px 20px rgba(196, 26, 26, 0.3);
+}
+
+.category-card.active .label {
+    color: #ffffff;
+}
+
+.category-img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 12px;
+    object-fit: contain;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.category-card:hover .category-img,
+.category-card.active .category-img {
+    transform: scale(1.1);
+}
+
+.label {
+    font-size: 15px;
+    font-weight: 600;
+    color: #333333;
+    transition: color 0.3s ease;
+}
+
+/* [UPDATE: 2026-08-16] - Xây dựng phần Section Header (Popular Picks) */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+
+/* [UPDATE: 2026-08-18] - Căn giữa tiêu đề thực đơn */
+.section-header.text-center {
+    justify-content: center;
+    text-align: center;
+}
+
+.section-header h2 {
+    font-size: 32px;
+    color: #1e1e1e;
+    font-weight: 700;
+}
+
+.view-all {
+    text-decoration: none;
+    color: #c41a1a;
+    font-weight: 600;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.view-all:hover {
+    color: #a81616;
+}
+
+.view-all span {
+    margin-left: 5px;
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+.view-all:hover span {
+    transform: translateX(5px);
+}
+
+/* [UPDATE: 2026-08-16] - Xây dựng lưới danh sách sản phẩm (Card Grid) */
+/* [UPDATE: 18.08.2026] - Chuyển menu-section tràn viền 100% và nới rộng khung thực đơn lên 1350px để sát lề hơn */
+.menu-section {
+    max-width: 100% !important;
+    width: 100%;
+    margin: 0 auto;
+    padding: 60px 0;
+}
+
+/* Ký hiệu '>' nghĩa là chọn các phần tử con trực tiếp nằm ngay bên trong lớp cha .menu-section. 
+   Đoạn này giúp giới hạn độ rộng tối đa (1350px) và căn giữa toàn bộ nội dung bên trong thực đơn,
+   trong khi phần nền của .menu-section bên ngoài vẫn tràn rộng 100% toàn màn hình. */
+.menu-section > .section-header,
+.menu-section > .menu-group,
+.menu-section > .action-container,
+.menu-section > .food-container,
+.menu-section > .menu-scroll-container {
+    max-width: 1350px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+/* [UPDATE: 2026-08-16] - Cải thiện khung cuộn: Thêm padding-bottom để thẻ cuối không bị cắt cụt */
+.menu-scroll-container {
+    max-height: 800px;
+    overflow-y: auto;
+    padding: 15px 15px 40px 15px; /* Tăng khoảng không bên dưới */
+    scrollbar-width: thin;
+    scrollbar-color: #c41a1a #f0f0f0;
+}
+
+/* Custom thanh cuộn cho Webkit (Chrome, Safari, Edge) */
+.menu-scroll-container::-webkit-scrollbar {
+    width: 10px;
+}
+.menu-scroll-container::-webkit-scrollbar-track {
+    background: #f0f0f0;
+    border-radius: 10px;
+}
+.menu-scroll-container::-webkit-scrollbar-thumb {
+    background: #c41a1a;
+    border-radius: 10px;
+    border: 2px solid #f0f0f0;
+}
+.menu-scroll-container::-webkit-scrollbar-thumb:hover {
+    background: #ffb703;
+}
+
+/* [UPDATE: 2026-08-16] - Cải thiện lưới: dùng auto-fit và minmax 250px để chia cột đều đẹp */
+.menu-group {
+    display: none;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px; 
+    margin-bottom: 40px; 
+}
+
+.menu-group.active {
+    display: grid;
+    animation: fadeInTab 0.5s ease;
+}
+
+@keyframes fadeInTab {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+#bestsellers.menu-section {
+    max-width: 100% !important;
+    padding: 60px 0 80px 0;
+    background: linear-gradient(180deg, #ffffff 0%, #fffbf6 100%);
+    border-bottom: 1px solid rgba(196, 26, 26, 0.05);
+}
+
+#bestsellers .section-header, 
+#bestsellers .menu-group, 
+#bestsellers .action-container {
+    max-width: 1350px; /* Cập nhật 1350px đồng bộ để sát lề */
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+.section-subtitle {
+    font-size: 14px;
+    color: #777777;
+    margin-top: 8px;
+    font-weight: 500;
+    text-align: center;
+    max-width: 600px;
+    line-height: 1.5;
+}
+
+/* [UPDATE: 18.08.2026] - Thiết kế lại thẻ món ăn (.card) sử dụng flexbox và định vị relative/absolute cơ bản, dễ hiểu cho sinh viên */
+.card {
+    background-color: #ffffff;
+    border-radius: 20px;
+    padding: 20px;
+    padding-bottom: 75px; /* Chừa khoảng trống 75px dưới đáy để chứa giá và nút giỏ hàng */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid #f0f0f0;
+    position: relative; /* Dùng để định vị tuyệt đối các thẻ con bên trong */
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    height: 100%;
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Nhấc nhẹ thẻ lên 5px khi di chuột */
+    box-shadow: 0 10px 25px rgba(196, 26, 26, 0.1);
+    border-color: #ffb703;
+}
+
+.card.active {
+    border-color: #c41a1a;
+    background-color: #fffbfb;
+}
+
+#bestsellers .card::before {
+    content: "Bán chạy 🔥";
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: linear-gradient(135deg, #ff4e50, #ffb703);
+    color: #ffffff;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: bold;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.burger-img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+}
+
+.card:hover .burger-img {
+    transform: scale(1.05); /* Phóng to ảnh nhẹ 5% khi hover */
+}
+
+.card-content {
+    width: 100%;
+}
+
+.card-content h3 {
+    font-size: 18px;
+    color: #1e1e1e;
+    margin-bottom: 6px;
+    font-weight: 700;
+    line-height: 1.3;
+    transition: color 0.3s ease;
+}
+
+.card:hover .card-content h3 {
+    color: #c41a1a;
+}
+
+.card-content p {
+    font-size: 13px;
+    color: #777777;
+    line-height: 1.5;
+    margin-bottom: 0;
+    padding-right: 0;
+    /* Cắt chữ ở dòng thứ 2 để các thẻ luôn bằng chiều cao nhau */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    height: 38px;
+}
+
+/* Định vị giá tiền ở góc dưới cùng bên trái của thẻ món ăn */
+.price {
+    position: absolute;
+    bottom: 22px;
+    left: 20px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #c41a1a;
+    margin: 0;
+}
+
+/* Định vị nút giỏ hàng ở góc dưới cùng bên phải của thẻ món ăn */
+.cart-btn {
+    position: absolute;
+    bottom: 15px;
+    right: 20px;
+    background-color: #c41a1a;
+    color: #ffffff;
+    border: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(196, 26, 26, 0.15);
+}
+
+.card:hover .cart-btn {
+    transform: scale(1.05);
+}
+
+.card:hover .cart-btn:hover {
+    background-color: #ffb703;
+    color: #1e1e1e;
+    transform: scale(1.15) rotate(-10deg);
+}
+
+.action-container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.see-menu-btn {
+    background-color: transparent;
+    color: #c41a1a;
+    border: 2px solid #c41a1a;
+    padding: 12px 35px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.see-menu-btn:hover {
+    background-color: #c41a1a;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(196, 26, 26, 0.3);
+}
+
+/* [UPDATE: 2026-08-16] - CSS cho khu vực Blog (Blog Section & Blog Card) */
+.blog-section {
+    padding: 0 50px 60px 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.blog-card {
+    background-color: #ffffff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    border: 1px solid #f0f0f0;
+}
+
+.blog-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    border-color: #ffb703;
+}
+
+.blog-img-wrapper {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.blog-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.blog-card:hover .blog-img {
+    transform: scale(1.05);
+}
+
+.blog-date {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background-color: #ffb703;
+    color: #1e1e1e;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 700;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.blog-content {
+    padding: 25px;
+}
+
+.blog-content h3 {
+    font-size: 20px;
+    color: #1e1e1e;
+    margin-bottom: 15px;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.blog-content p {
+    font-size: 15px;
+    color: #666666;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.read-more-btn {
+    display: inline-block;
+    background-color: #c41a1a;
+    color: #ffffff;
+    padding: 10px 24px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.read-more-btn:hover {
+    background-color: #ffb703;
+    color: #1e1e1e;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(255, 183, 3, 0.4);
+}
+
+/* [UPDATE: 2026-08-16] - CSS cho khu vực Liên hệ (Contact Section) */
+.contact-section {
+    padding: 0 50px 80px 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.contact-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.05);
+    border: 1px solid #f0f0f0;
+}
+
+.contact-info {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.icon-box {
+    width: 50px;
+    height: 50px;
+    background-color: #fff9f9;
+    color: #c41a1a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 20px;
+    box-shadow: 0 4px 10px rgba(196, 26, 26, 0.1);
+    transition: all 0.3s ease;
+}
+
+.info-item:hover .icon-box {
+    background-color: #c41a1a;
+    color: #ffffff;
+    transform: translateY(-3px);
+}
+
+.info-item h4 {
+    font-size: 18px;
+    color: #1e1e1e;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+.info-item p {
+    font-size: 15px;
+    color: #666666;
+}
+
+.contact-form-wrapper {
+    flex: 1;
+    min-width: 300px;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-group input,
+.input-group textarea {
+    width: 100%;
+    padding: 15px 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    color: #333333;
+    outline: none;
+    transition: all 0.3s ease;
+    background-color: #fafafa;
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+    border-color: #c41a1a;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(196, 26, 26, 0.1);
+}
+
+.submit-btn {
+    background-color: #c41a1a;
+    color: #ffffff;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.submit-btn:hover {
+    background-color: #ffb703;
+    color: #1e1e1e;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(255, 183, 3, 0.4);
+}
+
+/* [UPDATE: 2026-08-16] - CSS cho Chân trang (Footer) */
+.footer {
+    background-color: #1e1e1e;
+    padding: 25px 0;
+    text-align: center;
+}
+
+.footer-content p {
+    color: #ffffff;
+    font-size: 14px;
+    margin: 0;
+    letter-spacing: 0.5px;
+}
+
+/* [UPDATE: 2026-08-16] - CSS cho Dropdown Menu mục TRANG */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 150%;
+    left: 0;
+    background-color: #c41a1a;
+    min-width: 200px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    border-radius: 12px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
+    z-index: 1000;
+}
+
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-menu li {
+    padding: 0;
+}
+
+.dropdown-menu li a {
+    display: block;
+    padding: 12px 20px;
+    color: #ffffff;
+    font-size: 15px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.dropdown-menu li:last-child a {
+    border-bottom: none;
+}
+
+.dropdown-menu li a:hover {
+    background-color: #ffb703;
+    color: #1e1e1e;
+}
+.dropdown-menu li a::after {
+    display: none;
+}
+
+/* [UPDATE: 2026-08-16] - CSS cho khu vực Về Chúng Tôi (About Us) */
+.about-section {
+    padding: 80px 50px;
+    background-color: #fff9f9;
+}
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+.about-content {
+    flex: 1;
+    min-width: 300px;
+}
+.about-content h2 {
+    font-size: 36px;
+    color: #c41a1a;
+    margin-bottom: 20px;
+}
+.about-content p {
+    font-size: 16px;
+    color: #444;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+.about-image {
+    flex: 1;
+    min-width: 300px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+.about-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+.about-image:hover img {
+    transform: scale(1.03);
+}
+
+/* [UPDATE: 2026-08-16] - CSS cho khu vực Ưu Đãi Hot (Promotions) */
+.promo-section {
+    padding: 80px 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.promo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+}
+.promo-card {
+    background-color: #ffb703;
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 8px 25px rgba(255, 183, 3, 0.3);
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+.promo-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(255, 183, 3, 0.5);
+}
+.promo-badge {
+    position: absolute;
+    top: 20px;
+    left: -30px;
+    background-color: #c41a1a;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 5px 40px;
+    transform: rotate(-45deg);
+    font-size: 14px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+.promo-card h3 {
+    color: #c41a1a;
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+.promo-card p {
+    color: #333;
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+/* [UPDATE: 2026-08-16] - CSS cho khu vực Đội Ngũ Đầu Bếp (Chefs) */
+.chefs-section {
+    padding: 80px 50px;
+    background-color: #ffffff;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.chefs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    justify-items: center;
+}
+.chef-card {
+    text-align: center;
+    transition: all 0.3s ease;
+}
+.chef-card:hover {
+    transform: translateY(-10px);
+}
+.chef-img {
+    width: 200px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    border: 3px solid #c41a1a;
+}
+.chef-card h3 {
+    color: #1e1e1e;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+.chef-card p {
+    color: #c41a1a;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+/* [UPDATE: 2026-08-16] - CSS cho khu vực Hệ Thống Cửa Hàng (Branches) */
+.branch-section {
+    padding: 80px 50px;
+    background-color: #fff9f9;
+}
+.branch-section .section-header p {
+    color: #444;
+    margin-top: 10px;
+    font-size: 16px;
+}
+.branch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 40px auto 0;
+}
+.branch-card {
+    background-color: #ffffff;
+    border: 2px solid #ffb703;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.branch-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    border-color: #c41a1a;
+}
+.branch-card h3 {
+    color: #c41a1a;
+    font-size: 22px;
+    margin-bottom: 20px;
+    border-bottom: 2px dashed #eee;
+    padding-bottom: 10px;
+}
+.branch-info p {
+    color: #333;
+    font-size: 15px;
+    margin-bottom: 12px;
+    line-height: 1.5;
+}
+.branch-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 25px;
+}
+.btn-map, .btn-order {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 13px;
+}
+.btn-map {
+    background-color: #eee;
+    color: #333;
+}
+.btn-map:hover {
+    background-color: #ddd;
+}
+.btn-order {
+    background-color: #c41a1a;
+    color: #fff;
+}
+.btn-order:hover {
+    background-color: #ffb703;
+    color: #1e1e1e;
+}
+
+/* [UPDATE: 18.08.2026] - Thêm Media Query để tự động nới rộng lề trên màn hình PC/Tablet để giao diện cân đối hơn */
+@media (min-width: 768px) {
+    .food-container {
+        padding: 0 50px 40px 50px;
+    }
+    .menu-section {
+        padding: 0 50px 60px 50px;
+    }
+}
