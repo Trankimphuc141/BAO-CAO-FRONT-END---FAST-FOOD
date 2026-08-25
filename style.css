@@ -16,6 +16,11 @@ body {
     background-color: #ffffff;
 }
 
+h2, .badge, .promo-badge, button {
+    -webkit-user-select: none;
+    user-select: none;
+}
+
 /* [UPDATE: 2026-08-16] - Thêm thuộc tính sticky, hiệu ứng bóng đổ cho thanh Navbar */
 .navbar {
     display: flex;
@@ -406,7 +411,8 @@ body {
 .section-header h2 {
     font-size: 46px;
     color: #1e1e1e;
-    font-weight: 800;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
     letter-spacing: -1px;
     line-height: 1.15;
     background: linear-gradient(135deg, #c41a1a 0%, #e52b34 50%, #1e1e1e 100%);
@@ -549,10 +555,16 @@ body {
     font-size: 14px;
     color: #777777;
     margin-top: 8px;
-    font-weight: 500;
+    font-weight: 600;
     text-align: center;
     max-width: 600px;
     line-height: 1.5;
+}
+
+/* [UPDATE: 2026-08-25] - In đậm toàn bộ phần chữ ở khu vực tiêu đề Bảng Xếp Hạng */
+#bestsellers .section-header h2,
+#bestsellers .section-subtitle {
+    font-weight: 700;
 }
 
 /* [UPDATE: 18.08.2026] - Thiết kế lại thẻ món ăn (.card) sử dụng flexbox và định vị relative/absolute cơ bản, dễ hiểu cho sinh viên */
@@ -910,18 +922,66 @@ body {
     box-shadow: 0 6px 15px rgba(255, 183, 3, 0.4);
 }
 
-/* [UPDATE: 2026-08-16] - CSS cho Chân trang (Footer) */
+/* [UPDATE: 2026-08-25] - CSS cho Chân trang (Footer) */
 .footer {
-    background-color: #1e1e1e;
-    padding: 25px 0;
-    text-align: center;
+    background-color: #111111;
+    color: #ddd;
+    font-family: 'Poppins', sans-serif;
 }
 
-.footer-content p {
-    color: #ffffff;
-    font-size: 14px;
+.footer-top {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+    gap: 30px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 60px 4% 60px;
+    text-align: left;
+}
+
+.footer-col h4 {
+    color: #c82333;
+    font-size: 18px;
+    margin-bottom: 24px;
+    font-weight: 700;
+}
+
+.footer-col p {
+    line-height: 2;
+    font-size: 15px;
+    color: #cccccc;
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
     margin: 0;
-    letter-spacing: 0.5px;
+}
+
+.footer-col ul li {
+    margin-bottom: 10px;
+    font-size: 15px;
+    line-height: 2;
+    color: #cccccc;
+}
+
+.footer-col ul li strong {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+@media (max-width: 992px) {
+    .footer-top {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-top {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* [UPDATE: 2026-08-16] - CSS cho Dropdown Menu mục TRANG */
@@ -1000,6 +1060,8 @@ body {
 
 .about-content h2 {
     font-size: 36px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
     color: #c41a1a;
     margin-bottom: 20px;
 }
@@ -1009,6 +1071,7 @@ body {
     color: #444;
     line-height: 1.8;
     margin-bottom: 30px;
+    font-weight: 600;
 }
 
 .about-image {
@@ -1190,23 +1253,60 @@ body {
 .branch-card.premium-card {
     border-color: #ffb703;
     box-shadow: 0 12px 35px rgba(255, 183, 3, 0.08);
+    overflow: visible; /* Cho phép huy hiệu nổi ra ngoài */
 }
 
-/* Badge góc phải cho card đặc biệt */
-.branch-badge {
+/* Huy hiệu Gold Seal sang trọng */
+.gold-seal-badge {
     position: absolute;
-    top: 15px;
-    right: -30px;
-    background: #ffb703;
-    color: #1e1e1e;
-    font-size: 11px;
+    top: -20px;
+    right: -20px;
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #ffd700 0%, #d4af37 50%, #b8860b 100%);
+    border-radius: 50%;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 15px rgba(184, 134, 11, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.3);
+    z-index: 10;
+    text-align: center;
+}
+
+.gold-seal-badge::before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    right: 4px;
+    bottom: 4px;
+    border: 1px dashed rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.gold-seal-badge i {
+    font-size: 20px;
+    margin-bottom: 2px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.gold-seal-badge span {
+    font-size: 10px;
     font-weight: 700;
-    padding: 6px 30px;
-    transform: rotate(45deg);
-    box-shadow: 0 2px 8px rgba(255, 183, 3, 0.3);
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    z-index: 5;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    line-height: 1.1;
+}
+
+.info-icon {
+    color: #d4af37;
+    margin-right: 8px;
+    width: 16px;
+    text-align: center;
 }
 
 .branch-card-header {
@@ -1445,6 +1545,8 @@ body {
 }
 
 .modal-content h2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
     color: #c41a1a;
     margin-bottom: 25px;
 }
@@ -1452,15 +1554,27 @@ body {
 .close-btn {
     position: absolute;
     top: 15px;
-    right: 20px;
-    font-size: 28px;
+    right: 15px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    color: #c82333;
+    font-size: 20px;
     font-weight: bold;
-    color: #888;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
     cursor: pointer;
+    transition: 0.3s;
+    z-index: 10;
 }
 
 .close-btn:hover {
-    color: #333;
+    background-color: #c82333;
+    color: #ffffff;
 }
 
 .modal-content input {
@@ -1617,6 +1731,8 @@ body {
 
 .cart-header h2 {
     color: #c41a1a;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
     font-size: 1.5rem;
 }
 
@@ -1882,6 +1998,21 @@ body {
     padding-top: 10px;
 }
 
+.order-sub-row {
+    font-size: 0.95rem;
+    font-weight: normal;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.order-sub-row.discount-text {
+    color: #28a745;
+}
+
+.order-total-row {
+    margin-top: 5px;
+}
+
 /* =========================================
    DAILY RANKING BADGES
 ========================================= */
@@ -2103,5 +2234,38 @@ body {
 @media (max-width: 480px) {
     .promo-cards-grid {
         grid-template-columns: 1fr;
+    }
+}
+
+/* ========================================= */
+/* BRAND STORY MODAL LOGIC                   */
+/* ========================================= */
+
+.brand-hero-img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.brand-story-text h3 {
+    color: #c41a1a;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.brand-story-text p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #333333;
+    text-align: justify;
+    margin-bottom: 12px;
+}
+
+@media (max-width: 768px) {
+    .brand-story-text p {
+        text-align: left;
     }
 }

@@ -312,7 +312,8 @@
                 </div>
                 <!-- Ăn Sáng 2 -->
                 <div class="card">
-                    <img src="./img/banh mi xuc xich.png" alt="Bánh Cuộn" class="burger-img">
+                    <img src="./img/BanhCuonXucXich.png" alt="Bánh Cuộn Xúc Xích" class="burger-img"
+                        style="object-fit: cover;">
                     <span class="price">50.000đ</span>
                     <div class="card-content">
                         <h3>Bánh Cuộn Xúc Xích</h3>
@@ -625,7 +626,7 @@
                 <p>Khởi nguồn từ niềm đam mê bất tận với ẩm thực nhanh, chúng tôi cam kết mang đến những bữa ăn ngon
                     miệng, nóng hổi và chất lượng nhất. Với nguồn nguyên liệu tươi sạch mỗi ngày, chúng tôi không chỉ
                     phục vụ thức ăn, mà còn trao gửi niềm vui trong từng hương vị.</p>
-                <button class="read-more-btn">Tìm hiểu thêm</button>
+                <button id="btn-brand-story" class="read-more-btn">Tìm hiểu thêm</button>
             </div>
             <div class="about-image">
                 <img src="./img/story banner.jpg" alt="Về Chúng Tôi">
@@ -764,7 +765,6 @@
     <section id="blog" class="blog-section">
         <div class="section-header">
             <h2>Tin Tức & Bài Viết</h2>
-            <a href="#" class="view-all">Xem Tất Cả <span>&rarr;</span></a>
         </div>
         <div class="blog-grid">
             <!-- Bài viết 1 -->
@@ -822,19 +822,24 @@
             <div class="branch-grid">
                 <!-- Chi nhánh 1 -->
                 <div class="branch-card premium-card">
-                    <div class="branch-badge">Trụ Sở Chính</div>
+                    <div class="gold-seal-badge">
+                        <i class="fas fa-city"></i>
+                        <span>TRỤ SỞ<br>CHÍNH</span>
+                    </div>
                     <div class="branch-card-header">
                         <h3>Chi Nhánh Trung Tâm</h3>
                     </div>
                     <div class="branch-info">
                         <div class="info-line">
-                            <p><strong>Địa chỉ:</strong> 123 Đường Fast Food, Quận 1, TP. HCM</p>
+                            <p><i class="fas fa-map-marker-alt info-icon"></i> <strong>Địa chỉ:</strong> 123 Đường Fast
+                                Food, Quận 1, TP. HCM</p>
                         </div>
                         <div class="info-line">
-                            <p><strong>Điện thoại:</strong> 0909 123 456</p>
+                            <p><i class="fas fa-phone-alt info-icon"></i> <strong>Điện thoại:</strong> 0909 123 456</p>
                         </div>
                         <div class="info-line">
-                            <p><strong>Giờ mở cửa:</strong> 8:00 Sáng - 10:00 Tối (Mỗi ngày)</p>
+                            <p><i class="fas fa-clock info-icon"></i> <strong>Giờ mở cửa:</strong> 8:00 Sáng - 10:00 Tối
+                                (Mỗi ngày)</p>
                         </div>
                     </div>
                     <div class="branch-actions">
@@ -850,13 +855,15 @@
                     </div>
                     <div class="branch-info">
                         <div class="info-line">
-                            <p><strong>Địa chỉ:</strong> 456 Đường Nguyệt Quế, Hoàn Kiếm, Hà Nội</p>
+                            <p><i class="fas fa-map-marker-alt info-icon"></i> <strong>Địa chỉ:</strong> 456 Đường
+                                Nguyệt Quế, Hoàn Kiếm, Hà Nội</p>
                         </div>
                         <div class="info-line">
-                            <p><strong>Điện thoại:</strong> 0909 654 321</p>
+                            <p><i class="fas fa-phone-alt info-icon"></i> <strong>Điện thoại:</strong> 0909 654 321</p>
                         </div>
                         <div class="info-line">
-                            <p><strong>Giờ mở cửa:</strong> 7:00 Sáng - 11:00 Tối (Mỗi ngày)</p>
+                            <p><i class="fas fa-clock info-icon"></i> <strong>Giờ mở cửa:</strong> 7:00 Sáng - 11:00 Tối
+                                (Mỗi ngày)</p>
                         </div>
                     </div>
                     <div class="branch-actions">
@@ -872,13 +879,15 @@
                     </div>
                     <div class="branch-info">
                         <div class="info-line">
-                            <p><strong>Địa chỉ:</strong> 789 Đường Tôn Đức Thắng, Liên Chiểu, Đà Nẵng</p>
+                            <p><i class="fas fa-map-marker-alt info-icon"></i> <strong>Địa chỉ:</strong> 789 Đường Tôn
+                                Đức Thắng, Liên Chiểu, Đà Nẵng</p>
                         </div>
                         <div class="info-line">
-                            <p><strong>Điện thoại:</strong> 0909 987 654</p>
+                            <p><i class="fas fa-phone-alt info-icon"></i> <strong>Điện thoại:</strong> 0909 987 654</p>
                         </div>
                         <div class="info-line">
-                            <p><strong>Giờ mở cửa:</strong> 9:00 Sáng - 10:30 Tối (Mỗi ngày)</p>
+                            <p><i class="fas fa-clock info-icon"></i> <strong>Giờ mở cửa:</strong> 9:00 Sáng - 10:30 Tối
+                                (Mỗi ngày)</p>
                         </div>
                     </div>
                     <div class="branch-actions">
@@ -954,10 +963,38 @@
         </div>
     </section>
 
-    <!-- [UPDATE: 2026-08-16] - Dịch sang tiếng Việt Chân Trang (Footer) -->
+    <!-- [UPDATE: 2026-08-25] - Dịch sang tiếng Việt Chân Trang (Footer) -->
     <footer class="footer">
-        <div class="footer-content">
-            <p> 2026 Fast Food Website. Đã đăng ký Bản quyền.</p>
+        <div class="footer-top">
+            <div class="footer-col">
+                <h4>Về Chúng Tôi</h4>
+                <p>Đồ án Website Fast Food mang đến trải nghiệm đặt đồ ăn trực tuyến tiện lợi, nhanh chóng với giao diện hiện đại và thân thiện. Chúng tôi luôn nỗ lực không ngừng để nâng cao chất lượng phục vụ.</p>
+                <p style="margin-top: 20px; font-size: 13px; color: #888;">&copy; 2026 Fast Food Website. Đã đăng ký Bản quyền.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Thông Tin Nhóm</h4>
+                <ul>
+                    <li><strong>Nhóm:</strong> FastFood</li>
+                    <li><strong>Trưởng nhóm:</strong> Trần Phạm Kim Phúc</li>
+                    <li><strong>Thành viên:</strong> Vũ Nguyễn Đức Trí</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Thông Tin Đồ Án</h4>
+                <ul>
+                    <li><strong>Trường:</strong> Cao đẳng Văn Lang Sài Gòn</li>
+                    <li><strong>Ngành:</strong> Công Nghệ Thông Tin</li>
+                    <li><strong>Năm học:</strong> 2026</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Liên Hệ</h4>
+                <ul>
+                    <li><strong>Địa chỉ:</strong> 123 Đường Fast Food, Quận 1, TP. HCM</li>
+                    <li><strong>Điện thoại:</strong> 0909 123 456</li>
+                    <li><strong>Email:</strong> admin@fastfood.com</li>
+                </ul>
+            </div>
         </div>
     </footer>
     <!-- MODAL ĐĂNG NHẬP -->
@@ -1048,6 +1085,36 @@
                 style="width:100%; height:400px; border-radius: 10px; overflow:hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
                 <iframe id="branch-map-iframe" src="" width="100%" height="100%" style="border:0;" allowfullscreen=""
                     loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL CHI TIẾT BÀI VIẾT (BLOG) -->
+    <div id="article-modal" class="modal-overlay">
+        <div class="modal-content" style="max-width: 700px; width: 95%; padding: 25px; text-align: left;">
+            <span class="close-btn" onclick="closeArticleModal()">&times;</span>
+            <h2 id="article-modal-title"
+                style="margin-bottom: 15px; font-size: 1.5rem; color: #c41a1a; text-align: center;">Tiêu đề bài viết
+            </h2>
+            <img id="article-modal-img" src="" alt="Ảnh Bài Viết"
+                style="width: 100%; max-height: 400px; object-fit: cover; border-radius: 10px; margin-bottom: 20px;">
+            <div id="article-modal-content" style="font-size: 1rem; color: #444; line-height: 1.8;">
+                <!-- Nội dung chi tiết render bằng JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL CÂU CHUYỆN THƯƠNG HIỆU -->
+    <div id="brand-story-modal" class="modal-overlay">
+        <div class="modal-content" style="max-width: 700px; width: 95%; padding: 25px; text-align: left;">
+            <span class="close-btn" onclick="closeBrandStoryModal()">&times;</span>
+            <img src="./img/hamberger phô mai.jpg" alt="Hành Trình Vị Giác" class="brand-hero-img">
+            <div class="brand-story-text">
+                <h3>Hành Trình Vị Giác - Nơi Đam Mê Hội Tụ</h3>
+                <p>Bắt đầu từ một niềm đam mê mãnh liệt với ẩm thực, chúng tôi nhận ra một chân lý đơn giản: "Thức ăn nhanh không đồng nghĩa với việc đánh mất đi linh hồn của món ăn". Mỗi chiếc burger được tạo ra không chỉ để khỏa lấp cơn đói vội vã, mà phải là một trải nghiệm bùng nổ hương vị, đánh thức mọi giác quan ngay từ lần nếm thử đầu tiên.</p>
+                <p>Đó là lý do thương hiệu của chúng tôi kiên định theo đuổi triết lý <strong>"Tươi ngon mỗi ngày"</strong>. Từng lớp vỏ bánh mì brioche được nướng bơ xém vàng thơm lừng, lớp phô mai cheddar béo ngậy ấp ủ lấy miếng thịt bò 100% nguyên chất mọng nước. Kết hợp cùng xà lách giòn rụm từ nông trại địa phương và nước sốt độc quyền được pha chế từ công thức bí truyền, tất cả hòa quyện tạo nên một bản giao hưởng hoàn hảo trên đầu lưỡi.</p>
+                <p>Trải qua nhiều năm không ngừng hoàn thiện, chúng tôi tự hào mang đến không chỉ là những bữa ăn chất lượng, mà còn là một không gian kết nối tuyệt vời. Nơi những nụ cười được sẻ chia, nơi những mệt mỏi tan biến sau một ngày dài làm việc.</p>
+                <p>Cảm ơn bạn đã lựa chọn dừng chân và trở thành một phần trong câu chuyện của chúng tôi. Hãy chuẩn bị sẵn sàng, vì chiếc burger trên tay bạn được làm ra để mang lại niềm vui sảng khoái nhất!</p>
             </div>
         </div>
     </div>

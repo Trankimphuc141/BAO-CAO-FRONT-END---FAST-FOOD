@@ -123,6 +123,9 @@ window.addEventListener('click', (event) => {
     if (event.target.classList.contains('modal-overlay')) {
         closeModals();
         if (typeof closeHistoryModal === 'function') closeHistoryModal();
+        if (typeof closeMapModal === 'function') closeMapModal();
+        if (typeof closeArticleModal === 'function') closeArticleModal();
+        if (typeof closeBrandStoryModal === 'function') closeBrandStoryModal();
     }
     if (event.target.classList.contains('cart-overlay')) closeCartModal();
 });
@@ -468,8 +471,8 @@ function handleCheckout() {
         username: currentUser,
         items: cart,
         subtotal,
-        discount: discountAmt,
-        promoCode: activePromo ? activePromo.code : null,
+        discountAmount: discountAmt,
+        discountCode: activePromo ? activePromo.code : null,
         total
     });
 
@@ -515,13 +518,28 @@ function renderOrderHistory() {
             `;
         });
 
+        const discountVal = order.discountAmount !== undefined ? order.discountAmount : (order.discount || 0);
+        const codeVal = order.discountCode || order.promoCode || '';
+        const subtotalVal = order.subtotal || order.total;
+
+        let discountHtml = '';
+        if (discountVal > 0) {
+            discountHtml = `
+                <div class="order-sub-row">Tạm tính: ${subtotalVal.toLocaleString('vi-VN')}đ</div>
+                <div class="order-sub-row discount-text">Giảm (${codeVal}): -${discountVal.toLocaleString('vi-VN')}đ</div>
+            `;
+        }
+
         html += `
             <div class="order-card">
                 <div class="order-header">Thời gian đặt: ${dateStr}</div>
                 <div class="order-body">
                     ${itemsHtml}
                 </div>
-                <div class="order-footer">Tổng cộng: ${order.total.toLocaleString('vi-VN')}đ</div>
+                <div class="order-footer">
+                    ${discountHtml}
+                    <div class="order-total-row">Tổng cộng: ${order.total.toLocaleString('vi-VN')}đ</div>
+                </div>
             </div>
         `;
     });
@@ -779,5 +797,101 @@ function closeMapModal() {
 window.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') {
         closeMapModal();
+        if (typeof closeArticleModal === 'function') closeArticleModal();
+        if (typeof closeBrandStoryModal === 'function') closeBrandStoryModal();
     }
 });
+
+// =========================================
+// ARTICLE MODAL LOGIC (BLOG)
+// =========================================
+
+function closeArticleModal() {
+    const modal = document.getElementById('article-modal');
+    if (modal) {
+        modal.classList.remove('show');
+        setTimeout(() => {
+            modal.style.display = 'none';
+        }, 300);
+    }
+}
+
+const articleData = {
+    "Cách làm burger hoàn hảo tại nhà": `<p style="margin-bottom: 15px;">Để làm được một chiếc burger "chuẩn nhà hàng" ngay tại bếp, bí quyết đầu tiên nằm ở miếng thịt bò (patty). Hãy chọn thịt bò xay có tỷ lệ mỡ khoảng 20% để đảm bảo độ mềm và mọng nước.</p><p style="margin-bottom: 15px;">Tiếp theo, đừng lật thịt quá nhiều lần trên chảo. Áp chảo mỗi mặt khoảng 3-4 phút ở nhiệt độ cao để tạo lớp vỏ xém vàng giòn rụm tự nhiên.</p><p style="margin-bottom: 15px;">Cuối cùng, hãy nướng sơ qua hai mặt của vỏ bánh mì bơ (brioche bun) để bánh không bị ỉu khi phết sốt. Thêm một lát phô mai cheddar tan chảy, xà lách giòn và vài lát cà chua tươi là bạn đã có một siêu phẩm!</p>`,
+    
+    "Top 5 Xu Hướng Thức Ăn Nhanh 2026": `<p style="margin-bottom: 15px;">Năm 2026 đánh dấu những bước ngoặt lớn trong ngành F&B. Dưới đây là 5 xu hướng nổi bật nhất:</p>
+<ul style="margin-bottom: 15px; padding-left: 20px;">
+  <li style="margin-bottom: 8px;"><strong>1. Thực đơn thuần chay:</strong> Thịt thực vật (plant-based) đang thống lĩnh thị trường ẩm thực toàn cầu.</li>
+  <li style="margin-bottom: 8px;"><strong>2. Trí tuệ nhân tạo (AI):</strong> Các ki-ốt tự động gợi ý món ăn theo cảm xúc và thời tiết.</li>
+  <li style="margin-bottom: 8px;"><strong>3. Bao bì bảo vệ môi trường:</strong> Bao bì tự hủy sinh học, thậm chí có thể... ăn được cùng món chính.</li>
+  <li style="margin-bottom: 8px;"><strong>4. Giao hàng bằng Drone:</strong> Nhận chiếc burger nóng hổi từ trên trời bay xuống không còn là viễn tưởng.</li>
+  <li style="margin-bottom: 8px;"><strong>5. Ẩm thực kết hợp (Fusion):</strong> Sự pha trộn giữa gia vị truyền thống địa phương và phong cách fast-food hiện đại.</li>
+</ul>`,
+
+    "Lịch sử của Khoai tây chiên": `<p style="margin-bottom: 15px;">Dù được gọi là "French Fries" (Khoai tây chiên kiểu Pháp), nguồn gốc thực sự của món ăn này lại gây tranh cãi gay gắt giữa Pháp và Bỉ.</p><p style="margin-bottom: 15px;">Người Bỉ khẳng định họ đã phát minh ra món này từ cuối thế kỷ 17. Khi những dòng sông bị đóng băng vào mùa đông, người dân nghèo không thể bắt cá để chiên, họ đã cắt khoai tây thành những thanh nhỏ và chiên chúng lên để thay thế.</p><p style="margin-bottom: 15px;">Cái tên "French Fries" xuất hiện trong Thế chiến I, khi những người lính Mỹ nếm thử món này ở Bỉ. Vì ngôn ngữ chính của quân đội Bỉ lúc bấy giờ là tiếng Pháp, các binh sĩ Mỹ đã gọi nhầm món này là "Khoai tây chiên của người Pháp". Dù thế nào, đây vẫn là món ăn kèm biểu tượng toàn cầu!</p>`
+};
+
+document.querySelectorAll('.read-more-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const card = e.target.closest('.blog-card');
+        if (!card) return;
+
+        const title = card.querySelector('h3').textContent.trim();
+        const imgSrc = card.querySelector('.blog-img').src;
+        
+        let fullContent = articleData[title];
+        
+        if (!fullContent) {
+            const summary = card.querySelector('p').textContent;
+            fullContent = `
+                <p style="margin-bottom: 15px;"><strong>${summary}</strong></p>
+                <p>Nội dung chi tiết đang được cập nhật...</p>
+            `;
+        }
+
+        const titleEl = document.getElementById('article-modal-title');
+        const imgEl = document.getElementById('article-modal-img');
+        const contentEl = document.getElementById('article-modal-content');
+        
+        if(titleEl) titleEl.textContent = title;
+        if(imgEl) imgEl.src = imgSrc;
+        if(contentEl) contentEl.innerHTML = fullContent;
+
+        const modal = document.getElementById('article-modal');
+        if(modal) {
+            modal.style.display = 'flex';
+            setTimeout(() => {
+                modal.classList.add('show');
+            }, 10);
+        }
+    });
+});
+
+// =========================================
+// BRAND STORY MODAL LOGIC
+// =========================================
+
+function closeBrandStoryModal() {
+    const modal = document.getElementById('brand-story-modal');
+    if (modal) {
+        modal.classList.remove('show');
+        setTimeout(() => {
+            modal.style.display = 'none';
+        }, 300);
+    }
+}
+
+const btnBrandStory = document.getElementById('btn-brand-story');
+if (btnBrandStory) {
+    btnBrandStory.addEventListener('click', (e) => {
+        e.preventDefault();
+        const modal = document.getElementById('brand-story-modal');
+        if (modal) {
+            modal.style.display = 'flex';
+            setTimeout(() => {
+                modal.classList.add('show');
+            }, 10);
+        }
+    });
+}
